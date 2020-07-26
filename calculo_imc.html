@@ -1,0 +1,71 @@
+<meta charset="UTF-8">
+<head>
+
+	<title>Cálculo de IMC</title>
+
+</head>
+
+<body>
+
+<button id="voltar">Voltar</button>
+<button onClick="start();">Começar</button>
+
+
+</body>
+
+<script type="text/javascript">
+	
+	//Variáveis
+
+	var botaoVoltar = document.querySelector('#voltar');
+	botaoVoltar.onclick = voltar;
+
+
+	//Funções
+
+	function voltar(){
+		window.history.back();
+	}
+
+	function pulaLinha(){
+		document.write("<br>")
+	}
+	
+	function mostra(frase){
+		document.write(frase)
+		pulaLinha();
+	}
+
+	function calculaImc(pesoUsuario, alturaUsuario){
+		return pesoUsuario / (alturaUsuario * alturaUsuario);
+		
+	}
+
+	function mediaImc(imc1, imc2, imc3){
+		var soma = imc1 + imc2 + imc3;
+		var total = soma/3;
+		mostra("A média dos IMC's é: " + total);
+	}
+
+	function start(){
+
+	nomeUsuario = prompt("Olá, qual o seu nome?");	
+	pesoUsuario = prompt("Olá " + nomeUsuario + ", qual o seu peso em quilos?");
+	alturaUsuario = prompt("Muito bem! E a sua altura? Ex: 1.83");
+	imcUsuario = calculaImc(pesoUsuario, alturaUsuario);
+	mostra("Bem " + nomeUsuario + ", o seu IMC é de: " + Math.round(imcUsuario));
+
+	if (imcUsuario < 18.5) {
+		mostra("Você está abaixo do recomendado pela OMS.")
+	}
+
+	if (imcUsuario > 35) {
+		mostra("Você está acima do recomendado pela OMS")
+	}
+
+	if (imcUsuario >= 18.5 && imcUsuario <= 35) {
+			mostra("Você está na média recomendada pela OMS.")
+	}
+
+}
+</script>

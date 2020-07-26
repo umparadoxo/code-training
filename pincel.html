@@ -1,0 +1,91 @@
+
+<head>
+	<meta charset="utf-8">
+	<title>Pincel</title>
+
+</head>
+
+<body style="padding: 2.5%;">
+	<button id='voltar'>Voltar</button>
+	<p>Escolha uma cor para pintar	:</p><input type="color"></br>
+	<p>Aperte SHIFT enquanto clica para aumentar o tamanho e ALT para diminuir</p>
+	<canvas width='600' height='400'></canvas>
+
+
+
+	<script>
+		//Capturando botão Voltar
+		var botaoVoltar = document.querySelector('#voltar');
+		botaoVoltar.onclick = function (evento){
+			window.history.back();
+		}
+
+		//Variáveis para capturar o canvas, a cor selecionada e definir um pincel
+		var tela = document.querySelector('canvas');
+		var pincel = tela.getContext('2d');
+		var paleta = document.querySelector('input');
+		var raio = 10;
+
+		// Preenche o pincel com a cor escolhida
+		pincel.fillStyle = paleta.value
+		pincel.fillRect(0, 0, 600, 400)
+
+		//Variável que controla se está desenhando ou não
+		var desenha = false;
+
+			// Logo abaixo temos o uso de uma função anônima
+			//Quando o mouse se move ele captura a coordenada e pinta
+			tela.onmousemove = function (evento) {
+
+			if (desenha){
+
+				var x = evento.pageX - tela.offsetLeft;
+				var y = evento.pageY - tela.offsetTop;
+					
+					//Verifica se tem duas teclas sendo pressionadas ao mesmo tempo
+					if (evento.shiftKey && evento.altKey){
+
+						alert ('Pressione uma tecla de cada vez, por favor!')
+					
+					//Verifica se o raio está no valor máximo
+					}else if (evento.shiftKey && raio + 10 <= 100) {
+
+						raio = raio + 10;
+					
+					//Verifica se o raio está no valor mínimo
+					}else if (evento.altKey && raio -5 >= 10){
+
+						raio = raio - 5;
+
+					}
+				
+				pincel.fillStyle = paleta.value;
+				pincel.beginPath();
+				pincel.arc(x, y, raio, 0, 2*3.14)
+				pincel.fill();
+			}
+
+			console.log(x + ', ' + y);
+
+			}
+
+
+			// Quando o mouse é clicado ele começa a desenhar
+			tela.onmousedown = function (){
+
+				desenha = true;
+
+			}
+
+			// Quando o mouse para de ser clicado ele para de desenhar
+			tela.onmouseup = function (){
+
+				desenha = false;
+
+			}
+
+
+	</script>
+
+</body>
+

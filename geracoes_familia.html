@@ -1,0 +1,44 @@
+<meta charset="UTF-8">
+
+
+
+<button id="voltar">Voltar</button></br></br>
+
+
+
+
+<script type="text/javascript">
+
+	function voltar(){
+		window.history.back();
+	}
+
+	function pulaLinha(){
+
+		document.write("<br>")
+
+	}
+
+
+	function mostra (msg){
+		document.write(msg)
+		pulaLinha();
+	}
+
+	var botaoVoltar = document.querySelector('#voltar');
+	botaoVoltar.onclick = voltar;
+
+	var ano = 2020
+	var ano2 = prompt('Insira um ano:');
+	var media = 18
+	var geracoes = ((ano-ano2)/media)
+
+
+	mostra("Desde o ano de " + ano2 + " tivemos: ")
+	pulaLinha();
+	mostra(Math.round (geracoes) +" gerações com média de 18 anos.");
+
+	
+
+
+</script>
