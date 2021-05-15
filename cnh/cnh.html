@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="script.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <form align="center" text-align="center">
+        <label for='age'>Qual a sua idade?</label></br></br>
+        <input type="number" id='age' name='quantity' min='1' max='100'></br></br>
+
+
+        <label>Você tem carteira?</label></br>
+        <input type="radio" id='yes' name='choices' onclick=defineYes()>
+        <label for='yes'>Sim</label>
+
+        <input type="radio" id='no' name='choices' onclick=defineNo()>
+        <label for='no'>Não</label></br></br>
+        <input type='button' onclick=window.history.back(); value='Voltar'>
+        <input type='button' id="botao" onclick=validate(); value='Verificar'></></br></br>
+
+        <label>Resultado:</label>
+        <p id='resultado'></p>
+    </form>
+</body>
+
+</html>
